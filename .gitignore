@@ -1,0 +1,4 @@
+# Ignore libraries file
+libraries/
+
+.DS_Store
