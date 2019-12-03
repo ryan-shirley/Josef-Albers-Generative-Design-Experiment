@@ -11,7 +11,7 @@ class Line {
     }
 
     /**
-     * draw() Draws a line on the canvas a certain amount of times
+     * draw() Draws a line on the canvas a set amount of times
      */
     draw(amount) {
         fill(this.colour)
@@ -31,6 +31,9 @@ let red = 20
 let grey = 80
 let blue = 40
 let green = 145
+
+let initX = 100
+let initY = 100
 
 // Vetical Spacing
 let thickBlackSpacing = 30
@@ -72,14 +75,14 @@ function setup() {
     colour2 = color(0)
 
     // Init Lines
-    line1 = new Line(colour2, thinkness1, yellow, thickBlackSpacing, grey + red, 0)
-    line2 = new Line(colour2, thinkness1, blue, thickBlackSpacing, grey + red + yellow + blue + grey + red + grey, 0)
-    line3 = new Line(colour2, thinkness2, red + yellow + blue + grey + red + grey + green + green + grey + blue, thinBlackSpacing, grey, line1.vertSpacing * 2 + line1.thinkness * 3 + thickBlackSpacing / 2 - thinkness2 / 2)
-    line4 = new Line(colour1, thinkness2, grey + red + yellow + blue, thinWhiteSpacing, 0, line1.vertSpacing * 2 + line1.thinkness * 3 + thickBlackSpacing / 2 + thinkness2 / 2 + 2)
-    line5 = new Line(colour1, thinkness2, grey + red, thinWhiteSpacing * .92, line4.width, line1.vertSpacing * 5 + line1.thinkness * 6)
-    line6 = new Line(colour1, thinkness2, grey, line3.vertSpacing, line4.width + line5.width + grey + yellow, line3.initDrawY - thinkness2 * 1.25)
-    line7 = new Line(colour1, thinkness2, green + green, thinWhiteSpacing, grey + red + yellow + blue + grey + red + grey + green, line1.thinkness * 2 + line1.vertSpacing * 2 - thinkness2 * 1.3)
-    line8 = new Line(colour1, thinkness2, yellow + yellow, thinWhiteSpacing, grey + red + yellow + blue + grey + red + grey + green + green + grey, line1.thinkness * 5 + line1.vertSpacing * 4 - thinkness2 * 1.25)
+    line1 = new Line(colour2, thinkness1, yellow, thickBlackSpacing, initX + grey + red, initY + 0)
+    line2 = new Line(colour2, thinkness1, blue, thickBlackSpacing, initX + grey + red + yellow + blue + grey + red + grey, 0)
+    line3 = new Line(colour2, thinkness2, red + yellow + blue + grey + red + grey + green + green + grey + blue, thinBlackSpacing, initX + grey, line1.vertSpacing * 2 + line1.thinkness * 3 + thickBlackSpacing / 2 - thinkness2 / 2)
+    line4 = new Line(colour1, thinkness2, grey + red + yellow + blue, thinWhiteSpacing, initX + 0, line1.vertSpacing * 2 + line1.thinkness * 3 + thickBlackSpacing / 2 + thinkness2 / 2 + 2)
+    line5 = new Line(colour1, thinkness2, grey + red, thinWhiteSpacing * .92, initX + line4.width, line1.vertSpacing * 5 + line1.thinkness * 6)
+    line6 = new Line(colour1, thinkness2, grey, line3.vertSpacing, initX + line4.width + line5.width + grey + yellow, line3.initDrawY - thinkness2 * 1.25)
+    line7 = new Line(colour1, thinkness2, green + green, thinWhiteSpacing, initX + grey + red + yellow + blue + grey + red + grey + green, line1.thinkness * 2 + line1.vertSpacing * 2 - thinkness2 * 1.3)
+    line8 = new Line(colour1, thinkness2, yellow + yellow, thinWhiteSpacing, initX + grey + red + yellow + blue + grey + red + grey + green + green + grey, line1.thinkness * 5 + line1.vertSpacing * 4 - thinkness2 * 1.25)
 
 
     // Draw line 1
