@@ -32,8 +32,8 @@ let grey = 80
 let blue = 40
 let green = 145
 
-let initX = 100
-let initY = 100
+let initX = 250
+let initY = 250
 
 // Vetical Spacing
 let thickBlackSpacing = 30
@@ -76,13 +76,13 @@ function setup() {
 
     // Init Lines
     line1 = new Line(colour2, thinkness1, yellow, thickBlackSpacing, initX + grey + red, initY + 0)
-    line2 = new Line(colour2, thinkness1, blue, thickBlackSpacing, initX + grey + red + yellow + blue + grey + red + grey, 0)
-    line3 = new Line(colour2, thinkness2, red + yellow + blue + grey + red + grey + green + green + grey + blue, thinBlackSpacing, initX + grey, line1.vertSpacing * 2 + line1.thinkness * 3 + thickBlackSpacing / 2 - thinkness2 / 2)
-    line4 = new Line(colour1, thinkness2, grey + red + yellow + blue, thinWhiteSpacing, initX + 0, line1.vertSpacing * 2 + line1.thinkness * 3 + thickBlackSpacing / 2 + thinkness2 / 2 + 2)
-    line5 = new Line(colour1, thinkness2, grey + red, thinWhiteSpacing * .92, initX + line4.width, line1.vertSpacing * 5 + line1.thinkness * 6)
+    line2 = new Line(colour2, thinkness1, blue, thickBlackSpacing, initX + grey + red + yellow + blue + grey + red + grey, initY + 0)
+    line3 = new Line(colour2, thinkness2, red + yellow + blue + grey + red + grey + green + green + grey + blue, thinBlackSpacing, initX + grey, initY + line1.vertSpacing * 2 + line1.thinkness * 3 + thickBlackSpacing / 2 - thinkness2 / 2)
+    line4 = new Line(colour1, thinkness2, grey + red + yellow + blue, thinWhiteSpacing, initX + 0, initY + line1.vertSpacing * 2 + line1.thinkness * 3 + thickBlackSpacing / 2 + thinkness2 / 2 + 2)
+    line5 = new Line(colour1, thinkness2, grey + red, thinWhiteSpacing * .92, initX + line4.width, initY + line1.vertSpacing * 5 + line1.thinkness * 6)
     line6 = new Line(colour1, thinkness2, grey, line3.vertSpacing, initX + line4.width + line5.width + grey + yellow, line3.initDrawY - thinkness2 * 1.25)
-    line7 = new Line(colour1, thinkness2, green + green, thinWhiteSpacing, initX + grey + red + yellow + blue + grey + red + grey + green, line1.thinkness * 2 + line1.vertSpacing * 2 - thinkness2 * 1.3)
-    line8 = new Line(colour1, thinkness2, yellow + yellow, thinWhiteSpacing, initX + grey + red + yellow + blue + grey + red + grey + green + green + grey, line1.thinkness * 5 + line1.vertSpacing * 4 - thinkness2 * 1.25)
+    line7 = new Line(colour1, thinkness2, green + green, thinWhiteSpacing, initX + grey + red + yellow + blue + grey + red + grey + green, initY + line1.thinkness * 2 + line1.vertSpacing * 2 - thinkness2 * 1.3)
+    line8 = new Line(colour1, thinkness2, yellow + yellow, thinWhiteSpacing, initX + grey + red + yellow + blue + grey + red + grey + green + green + grey, initY + line1.thinkness * 5 + line1.vertSpacing * 4 - thinkness2 * 1.25)
 
 
     // Draw line 1
@@ -92,13 +92,13 @@ function setup() {
     line2.draw(10)
 
     // Draw line 2 - Third vert black block
-    line2.initDrawX = grey + red + yellow + blue + grey + red + grey + yellow + blue
-    line2.initDrawY = line2.thinkness * 2 + line2.vertSpacing * 2
+    line2.initDrawX = initX + grey + red + yellow + blue + grey + red + grey + yellow + blue
+    line2.initDrawY = initY + line2.thinkness * 2 + line2.vertSpacing * 2
     line2.draw(11)
 
     // Draw line 2 - Last vert black black
-    line2.initDrawX = grey + red + yellow + blue + grey + red + grey + yellow + blue + blue + green
-    line2.initDrawY = line2.thinkness + line2.vertSpacing
+    line2.initDrawX = initX + grey + red + yellow + blue + grey + red + grey + yellow + blue + blue + green
+    line2.initDrawY = initY + line2.thinkness + line2.vertSpacing
     line2.draw(8)
 
     // Draw line 3
@@ -111,7 +111,7 @@ function setup() {
     line5.draw(5)
 
     // Draw line 5 - third white block
-    line5.initDrawX = line4.width + line5.width - red
+    line5.initDrawX = initX + line4.width + line5.width - red
     line5.initDrawY = line3.initDrawY + line3.thinkness + line3.vertSpacing - line5.thinkness * 1.5
     line5.vertSpacing = line3.vertSpacing
     line5.draw(7)
