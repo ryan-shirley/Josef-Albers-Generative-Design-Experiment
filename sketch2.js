@@ -134,7 +134,7 @@ function setup() {
         ? line1.startPosX + line1.width + line2.width
         : line1.startPosX - 36;
 
-    line5 = new Line(colour1, 20, lineHeight1, 9, 5, l5Start, 33)
+    line5 = new Line(colour1, 20, lineHeight1, 9, line1.amount - 5, l5Start, 33)
     line5.draw()
 
     // Second line 5 in gap
