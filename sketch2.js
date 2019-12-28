@@ -159,7 +159,7 @@ function setup() {
     )
     let [amt] = amount.splice(Math.floor(Math.random() * amount.length), 1)
 
-    let l1largeStart = start === 58 ? start + 60 + line2.width : start
+    let l1largeStart = start === 58 ? start + 55 + line2.width : start
 
     line1 = new Line(colour2, 12, lineHeight2, 7, amt, l1largeStart + initX, 1 + initY)
     line1.draw()
@@ -167,7 +167,7 @@ function setup() {
     // ***************************************************************************
     // Thin Black line
     // ***************************************************************************
-    line3 = new Line(colour2, 150, lineHeight1, 9, 8, 1 + initX, 17 + initY)
+    line3 = new Line(colour2, 135, lineHeight1, 9, 8, 1 + initX, 17 + initY)
     line3.draw()
 
     // ***************************************************************************
@@ -179,12 +179,13 @@ function setup() {
             ? line1.startPosX + line1.width + line2.width
             : line1.startPosX - 36
 
-    line5 = new Line(colour1, 20, lineHeight1, 9, line1.amount - 5, l5Start, 33 + initY)
+    line5 = new Line(colour1, 20, lineHeight1, 9, line1.amount - 5, l5Start, 43 + initY)
     line5.draw()
 
     // Second line 5 in gap
     line5.startPosX += line5.width - 4
-    line5.startPosY += line5.height + 1
+    line5.startPosY += line5.height - 19
+    line5.amount += 2
     line5.draw()
 }
 
