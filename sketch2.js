@@ -46,7 +46,7 @@ let colWidth;
 let rowHeight;
 
 // Lines
-let line1, line2, line3
+let line1, line2, line3, line5, line6
 
 /**
  * setup() Initial method run to setup project
@@ -56,6 +56,7 @@ function setup() {
     createCanvas(1754, 1240)
     background(217, 106, 19)
     noLoop()
+    noStroke()
 
     // Init colour
     colour1 = color(255)
@@ -83,14 +84,14 @@ function setup() {
     // --
     // Lines grouped either left or right
     // ***************************************************************************
-    let blackGrouping = [2, 120]
+    let blackGrouping = [2, 58]
     let amount = [6, 8, 10, 12]
 
     // Line 2 - Small
     let [startPos] = blackGrouping.splice(Math.floor(Math.random() * blackGrouping.length), 1)
 
     line2 = new Line(colour2, 8, lineHeight2, 7, 1, startPos, 1)
-    for(let i = 0; i < 3; i++) {
+    for(let i = 1; i <= 3; i++) {
         let [amt] = amount.splice(Math.floor(Math.random() * amount.length), 1)
         line2.amount = amt
 
@@ -98,13 +99,23 @@ function setup() {
         line2.startPosY += i == 1 ? (line2.height + line2.vertSpacing) * 2 : i === 2 && - (line2.height + line2.vertSpacing)
 
         line2.draw()
+
+        // ***************************************************************************
+        // Thin white line middle of think black grouping
+        // ***************************************************************************
+        if(i === 2) {
+            line6 = new Line(colour1, line2.width * 2, lineHeight1, 9, line2.amount - 4, line2.startPosX - line2.width, 35)
+            line6.draw()
+        }
     }
 
     // Line 1 - Large
     let [start] = blackGrouping.splice(Math.floor(Math.random() * blackGrouping.length), 1)
     let [amt] = amount.splice(Math.floor(Math.random() * amount.length), 1)
 
-    line1 = new Line(colour2, 12, lineHeight2, 7, amt, start, 1)
+    let l1largeStart = start === 58 ? start + 60 + line2.width : start
+
+    line1 = new Line(colour2, 12, lineHeight2, 7, amt, l1largeStart, 1)
     line1.draw()
 
 
@@ -113,6 +124,23 @@ function setup() {
     // ***************************************************************************
     line3 = new Line(colour2, 200, lineHeight1, 9, 8, 1, 7)
     line3.draw()
+
+    // ***************************************************************************
+    // Thin White lines
+    // ***************************************************************************
+    // Line 5
+    let l5Start =
+      start === 2
+        ? line1.startPosX + line1.width + line2.width
+        : line1.startPosX - 36;
+
+    line5 = new Line(colour1, 20, lineHeight1, 9, 5, l5Start, 33)
+    line5.draw()
+
+    // Second line 5 in gap
+    line5.startPosX += line5.width - 4
+    line5.startPosY += line5.height + 1
+    line5.draw()
 }
 
 // function draw()	{
