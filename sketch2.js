@@ -45,7 +45,7 @@ let lineHeight1 = 1
 let lineHeight2 = lineHeight1 * 3
 
 // Grid
-let gridSize = 250
+let gridSize = 200
 let numCol = gridSize
 let numRows = gridSize
 let colWidth
@@ -77,7 +77,7 @@ function setup() {
 
     // Init drawing position
     initX = 20
-    initY = 60
+    initY = 40
 
     //  Draw Grid
     // fill(217, 106, 19)
@@ -128,7 +128,7 @@ function setup() {
                 lineHeight1,
                 9,
                 line2.amount - 4,
-                line2.startPosX - line2.width + initX,
+                line2.startPosX - line2.width,
                 35 + initY
             )
             line6.draw()
@@ -150,7 +150,7 @@ function setup() {
     // ***************************************************************************
     // Thin Black line
     // ***************************************************************************
-    line3 = new Line(colour2, 200, lineHeight1, 9, 8, 1 + initX, 7 + initY)
+    line3 = new Line(colour2, 150, lineHeight1, 9, 8, 1 + initX, 7 + initY)
     line3.draw()
 
     // ***************************************************************************
