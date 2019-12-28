@@ -55,7 +55,7 @@ let rowHeight
 let initX, initY
 
 // Lines
-let line1, line2, line3, line5, line6
+let line1, line2, line3, line5, line6, line7
 
 /**
  * setup() Initial method run to setup project
@@ -119,9 +119,11 @@ function setup() {
         line2.draw()
 
         // ***************************************************************************
-        // Thin white line middle of think black grouping
+        // Thin white line middle of thick black grouping
         // ***************************************************************************
+        var middleXPos
         if (i === 2) {
+            // Line 6
             line6 = new Line(
                 colour1,
                 line2.width * 2,
@@ -132,6 +134,21 @@ function setup() {
                 35 + initY
             )
             line6.draw()
+
+            middleXPos = line2.startPosX + line2.width
+        }
+        else if(i === 3) {
+            // Line 7
+            line7 = new Line(
+                colour1,
+                50,
+                lineHeight1,
+                9,
+                line2.amount - 3,
+                middleXPos,
+                initY + 9
+            )
+            line7.draw()
         }
     }
 
@@ -150,7 +167,7 @@ function setup() {
     // ***************************************************************************
     // Thin Black line
     // ***************************************************************************
-    line3 = new Line(colour2, 150, lineHeight1, 9, 8, 1 + initX, 7 + initY)
+    line3 = new Line(colour2, 150, lineHeight1, 9, 8, 1 + initX, 17 + initY)
     line3.draw()
 
     // ***************************************************************************
