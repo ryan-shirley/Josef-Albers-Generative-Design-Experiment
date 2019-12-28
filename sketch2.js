@@ -55,7 +55,7 @@ let rowHeight
 let initX, initY
 
 // Lines
-let line1, line2, line3, line5, line6, line7
+let line1, line2, line3, line4, line5, line6, line7, line8
 
 /**
  * setup() Initial method run to setup project
@@ -187,6 +187,15 @@ function setup() {
     line5.startPosY += line5.height - 19
     line5.amount += 2
     line5.draw()
+
+    // Line 4 - Far left
+    line4 = new Line(colour1, 30, lineHeight1, 9, floor(Math.random() * (6 - 3) + 3), initX - 12, initY + 19)
+    line4.draw()
+
+    // Line 8 - Far right
+    let l8Y = start === 2 ? initY + 32 : initY + 29
+    line8 = new Line(colour1, 20, lineHeight1, 9, floor(Math.random() * (7 - 2) + 2), initX + 133, l8Y)
+    line8.draw()
 }
 
 // function draw()	{
