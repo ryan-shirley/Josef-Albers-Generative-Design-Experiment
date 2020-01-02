@@ -79,6 +79,8 @@ function setup() {
     initX = 20
     initY = 40
 
+    drawArt()
+
     //  Draw Grid
     // fill(217, 106, 19)
     // for(let i = 0; i < numRows; i++) {
@@ -90,7 +92,17 @@ function setup() {
     //         pop()
     //     }
     // }
+}
 
+// function draw() {
+//     let sizeX = Math.abs(width / 2 - mouseX)
+//     let sizeY = Math.abs(height / 2 - mouseY)
+// }
+
+/**
+ * drawArt() Draws the artwork on the canvas
+ */
+function drawArt() {
     // ***************************************************************************
     // Think Black lines
     // --
@@ -136,8 +148,7 @@ function setup() {
             line6.draw()
 
             middleXPos = line2.startPosX + line2.width
-        }
-        else if(i === 3) {
+        } else if (i === 3) {
             // Line 7
             line7 = new Line(
                 colour1,
@@ -161,7 +172,15 @@ function setup() {
 
     let l1largeStart = start === 58 ? start + 55 + line2.width : start
 
-    line1 = new Line(colour2, 12, lineHeight2, 7, amt, l1largeStart + initX, 1 + initY)
+    line1 = new Line(
+        colour2,
+        12,
+        lineHeight2,
+        7,
+        amt,
+        l1largeStart + initX,
+        1 + initY
+    )
     line1.draw()
 
     // ***************************************************************************
@@ -179,7 +198,15 @@ function setup() {
             ? line1.startPosX + line1.width + line2.width
             : line1.startPosX - 36
 
-    line5 = new Line(colour1, 20, lineHeight1, 9, line1.amount - 5, l5Start, 43 + initY)
+    line5 = new Line(
+        colour1,
+        20,
+        lineHeight1,
+        9,
+        line1.amount - 5,
+        l5Start,
+        43 + initY
+    )
     line5.draw()
 
     // Second line 5 in gap
@@ -189,14 +216,32 @@ function setup() {
     line5.draw()
 
     // Line 4 - Far left
-    line4 = new Line(colour1, 30, lineHeight1, 9, floor(Math.random() * (6 - 3) + 3), initX - 12, initY + 19)
+    line4 = new Line(
+        colour1,
+        30,
+        lineHeight1,
+        9,
+        floor(Math.random() * (6 - 3) + 3),
+        initX - 12,
+        initY + 19
+    )
     line4.draw()
 
     // Line 8 - Far right
     let l8Y = start === 2 ? initY + 32 : initY + 29
-    line8 = new Line(colour1, 20, lineHeight1, 9, floor(Math.random() * (7 - 2) + 2), initX + 133, l8Y)
+    line8 = new Line(
+        colour1,
+        20,
+        lineHeight1,
+        9,
+        floor(Math.random() * (7 - 2) + 2),
+        initX + 133,
+        l8Y
+    )
     line8.draw()
 }
 
-// function draw()	{
-// }
+function keyReleased() {
+    // TODO: Make this regerate drawing
+    key.toUpperCase() === "R" && console.log("Regenerate")
+}
