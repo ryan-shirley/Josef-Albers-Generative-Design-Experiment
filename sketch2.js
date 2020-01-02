@@ -37,8 +37,7 @@ class Line {
 }
 
 // Colours
-let colour1
-let colour2
+let colour1, colour2
 
 // Line height
 let lineHeight1 = 1
@@ -48,8 +47,7 @@ let lineHeight2 = lineHeight1 * 3
 let gridSize = 200
 let numCol = gridSize
 let numRows = gridSize
-let colWidth
-let rowHeight
+let colWidth, rowHeight
 
 // Painting Start Position
 let initX, initY
@@ -57,14 +55,16 @@ let initX, initY
 // Lines
 let line1, line2, line3, line4, line5, line6, line7, line8
 
+// Random Seed
+let ranSeed = 0
+
 /**
  * setup() Initial method run to setup project
  */
 function setup() {
     // Base setup
     createCanvas(1754, 1240)
-    background(217, 106, 19)
-    noLoop()
+    // noLoop()
     noStroke()
 
     // Init colour
@@ -79,8 +79,6 @@ function setup() {
     initX = 20
     initY = 40
 
-    drawArt()
-
     //  Draw Grid
     // fill(217, 106, 19)
     // for(let i = 0; i < numRows; i++) {
@@ -94,15 +92,20 @@ function setup() {
     // }
 }
 
-// function draw() {
-//     let sizeX = Math.abs(width / 2 - mouseX)
-//     let sizeY = Math.abs(height / 2 - mouseY)
-// }
+function draw() {
+    let posX = Math.abs(width / 2 - mouseX)
+    let posY = Math.abs(height / 2 - mouseY)
+
+    drawArt()
+}
 
 /**
  * drawArt() Draws the artwork on the canvas
  */
 function drawArt() {
+    background(217, 106, 19)
+    randomSeed(ranSeed)
+
     // ***************************************************************************
     // Think Black lines
     // --
@@ -113,13 +116,13 @@ function drawArt() {
 
     // Line 2 - Small
     let [startPos] = blackGrouping.splice(
-        Math.floor(Math.random() * blackGrouping.length),
+        Math.floor(random() * blackGrouping.length),
         1
     )
 
     line2 = new Line(colour2, 8, lineHeight2, 7, 1, startPos + initX, 1 + initY)
     for (let i = 1; i <= 3; i++) {
-        let [amt] = amount.splice(Math.floor(Math.random() * amount.length), 1)
+        let [amt] = amount.splice(Math.floor(random() * amount.length), 1)
         line2.amount = amt
 
         line2.startPosX += i !== 1 && line2.width + i * 8
@@ -165,10 +168,10 @@ function drawArt() {
 
     // Line 1 - Large
     let [start] = blackGrouping.splice(
-        Math.floor(Math.random() * blackGrouping.length),
+        Math.floor(random() * blackGrouping.length),
         1
     )
-    let [amt] = amount.splice(Math.floor(Math.random() * amount.length), 1)
+    let [amt] = amount.splice(Math.floor(random() * amount.length), 1)
 
     let l1largeStart = start === 58 ? start + 55 + line2.width : start
 
@@ -221,7 +224,7 @@ function drawArt() {
         30,
         lineHeight1,
         9,
-        floor(Math.random() * (6 - 3) + 3),
+        floor(random() * (6 - 3) + 3),
         initX - 12,
         initY + 19
     )
@@ -234,7 +237,7 @@ function drawArt() {
         20,
         lineHeight1,
         9,
-        floor(Math.random() * (7 - 2) + 2),
+        floor(random() * (7 - 2) + 2),
         initX + 133,
         l8Y
     )
@@ -243,5 +246,5 @@ function drawArt() {
 
 function keyReleased() {
     // TODO: Make this regerate drawing
-    key.toUpperCase() === "R" && console.log("Regenerate")
+    key.toUpperCase() === "R" && ranSeed++ && drawArt()
 }
