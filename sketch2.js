@@ -50,7 +50,7 @@ let numRows = gridSize
 let colWidth, rowHeight
 
 // Painting Start Position
-let initX = 20
+let initX = 30
 let initY = 40
 
 // Lines
@@ -58,6 +58,9 @@ let line1, line2, line3, line4, line5, line6, line7, line8
 
 // Random Seed
 let ranSeed = 0
+
+// Overhang Amount
+let overhangDif
 
 /**
  * setup() Initial method run to setup project
@@ -81,14 +84,28 @@ function setup() {
  * draw() Continuously Executes
  */
 function draw() {
+    // Mouse X positon
     let posX = width / 2 - mouseX
-    posX > width / 2 ? (posX = width / 2) : posX < -width / 2 && (posX = -width / 2) // Constrain to canvas
+    posX = posX * -1 // Make moving mouse to right postive instead of negative
+    posX > width / 2
+        ? (posX = width / 2)
+        : posX < -width / 2 && (posX = -width / 2) // Constrain to canvas
     document.getElementById("mouseX").innerHTML = posX
 
+    // Mouse Y positon
     let posY = height / 2 - mouseY
-    posY > height / 2 ? (posY = height / 2) : posY < -height / 2 && (posY = -height / 2) // Constrain to canvas
+    posY = posY * -1 // Make moving mouse to right postive instead of negative
+    posY > height / 2
+        ? (posY = height / 2)
+        : posY < -height / 2 && (posY = -height / 2) // Constrain to canvas
     document.getElementById("mouseY").innerHTML = posY
 
+    // Overhang Difference
+    overhangDif = floor(map(posX, 0, 877, 0, 5))
+    overhangDif < -3 && (overhangDif = -3)
+    document.getElementById("differenceX").innerHTML = overhangDif
+
+    // Draw artwork on canvas
     drawArt()
 }
 
@@ -135,7 +152,7 @@ function drawArt() {
             // Line 6
             line6 = new Line(
                 colour1,
-                line2.width * 2,
+                line2.width * 2 + overhangDif,
                 lineHeight1,
                 9,
                 line2.amount - 4,
@@ -149,11 +166,11 @@ function drawArt() {
             // Line 7
             line7 = new Line(
                 colour1,
-                50,
+                50 + overhangDif / 2,
                 lineHeight1,
                 9,
                 line2.amount - 3,
-                middleXPos,
+                middleXPos - overhangDif / 2,
                 initY + 9
             )
             line7.draw()
@@ -195,9 +212,10 @@ function drawArt() {
             ? line1.startPosX + line1.width + line2.width
             : line1.startPosX - 36
 
+    let l5initLength = 20
     line5 = new Line(
         colour1,
-        20,
+        l5initLength + overhangDif,
         lineHeight1,
         9,
         line1.amount - 5,
@@ -207,15 +225,16 @@ function drawArt() {
     line5.draw()
 
     // Second line 5 in gap
-    line5.startPosX += line5.width - 4
+    line5.startPosX += line5.width - 4 - overhangDif - overhangDif / 2
     line5.startPosY += line5.height - 19
+    line5.width = l5initLength + overhangDif / 2
     line5.amount += 2
     line5.draw()
 
     // Line 4 - Far left
     line4 = new Line(
         colour1,
-        30,
+        30 + overhangDif,
         lineHeight1,
         9,
         floor(random() * (6 - 3) + 3),
@@ -228,11 +247,11 @@ function drawArt() {
     let l8Y = start === 2 ? initY + 32 : initY + 29
     line8 = new Line(
         colour1,
-        20,
+        20 + overhangDif,
         lineHeight1,
         9,
         floor(random() * (7 - 2) + 2),
-        initX + 133,
+        initX + 133 - overhangDif,
         l8Y
     )
     line8.draw()

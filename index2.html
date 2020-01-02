@@ -20,26 +20,71 @@
     <body>
         <div class="container-fluid">
             <div class="jumbotron mt-3">
-                <h1 class="display-4">
-                    Josef Albers Generative Design Experiment
-                </h1>
-                <p class="lead">
-                    IADT Year 4 | Creative Coding CA1 | Generative Design Colour
-                    Experiment based off Josef Albers
-                </p>
+                <div class="container">
+                    <h1 class="display-4 text-center">
+                        Josef Albers Generative Design Experiment
+                    </h1>
+                    <p class="lead text-center">
+                        IADT Year 4 | Creative Coding CA1 | Generative Design Colour Experiment<br />
+                        based off Josef Albers | Created by Ryan Shirley
+                    </p>
+                    <hr class="my-4" />
+
+                    <div class="row">
+                        <div class="col">
+                            <h3>
+                                Controls
+                            </h3>
+                            <ul class="pl-3">
+                                <li>
+                                    Press the key
+                                    <span class="badge badge-primary">R</span>
+                                    to generate a new design.
+                                </li>
+                                <li>
+                                    Use
+                                    <span class="badge badge-primary"
+                                        >mouseX</span
+                                    >
+                                    to control the amount of overhang.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <h3>
+                                Values
+                            </h3>
+                            <button type="button" class="btn btn-primary">
+                                Difference
+                                <span id="differenceX" class="badge badge-light"
+                                    >0</span
+                                >
+                            </button>
+
+                            <button type="button" class="btn btn-primary">
+                                MouseX
+                                <span id="mouseX" class="badge badge-light"
+                                    >0</span
+                                >
+                            </button>
+
+                            <button type="button" class="btn btn-primary">
+                                MouseY
+                                <span id="mouseY" class="badge badge-light"
+                                    >0</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <hr class="my-4" />
 
-                <button type="button" class="btn btn-primary">
-                    MouseX <span id="mouseX" class="badge badge-light">0</span>
-                </button>
-
-                <button type="button" class="btn btn-primary">
-                    MouseY <span id="mouseY" class="badge badge-light">0</span>
-                </button>
-
-                <hr class="my-4" />
-
-                <div id="canvas-container"></div>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-auto">
+                        <div id="canvas-container"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
