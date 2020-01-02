@@ -65,8 +65,7 @@ let ranSeed = 0
 function setup() {
     // Base setup
     let canvas = createCanvas(1754, 1240)
-    canvas.parent("canvas-container")
-    // noLoop()
+    canvas.parent("canvas-container") // Move canvas to container element
     noStroke()
 
     // Init colour
@@ -78,6 +77,9 @@ function setup() {
     rowHeight = height / numRows
 }
 
+/**
+ * draw() Continuously Executes
+ */
 function draw() {
     let posX = width / 2 - mouseX
     posX > width / 2 ? (posX = width / 2) : posX < -width / 2 && (posX = -width / 2) // Constrain to canvas
