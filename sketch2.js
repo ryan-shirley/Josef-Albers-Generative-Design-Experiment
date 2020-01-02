@@ -50,7 +50,8 @@ let numRows = gridSize
 let colWidth, rowHeight
 
 // Painting Start Position
-let initX, initY
+let initX = 20
+let initY = 40
 
 // Lines
 let line1, line2, line3, line4, line5, line6, line7, line8
@@ -63,7 +64,8 @@ let ranSeed = 0
  */
 function setup() {
     // Base setup
-    createCanvas(1754, 1240)
+    let canvas = createCanvas(1754, 1240)
+    canvas.parent("canvas-container")
     // noLoop()
     noStroke()
 
@@ -74,27 +76,16 @@ function setup() {
     // Get grid values
     colWidth = width / numCol
     rowHeight = height / numRows
-
-    // Init drawing position
-    initX = 20
-    initY = 40
-
-    //  Draw Grid
-    // fill(217, 106, 19)
-    // for(let i = 0; i < numRows; i++) {
-    //     for(let j = 0; j < numCol; j++) {
-    //         push()
-    //         translate(j*colWidth, i*rowHeight)
-
-    //         rect(0, 0, colWidth, rowHeight);
-    //         pop()
-    //     }
-    // }
 }
 
 function draw() {
-    let posX = Math.abs(width / 2 - mouseX)
-    let posY = Math.abs(height / 2 - mouseY)
+    let posX = width / 2 - mouseX
+    posX > width / 2 ? (posX = width / 2) : posX < -width / 2 && (posX = -width / 2) // Constrain to canvas
+    document.getElementById("mouseX").innerHTML = posX
+
+    let posY = height / 2 - mouseY
+    posY > height / 2 ? (posY = height / 2) : posY < -height / 2 && (posY = -height / 2) // Constrain to canvas
+    document.getElementById("mouseY").innerHTML = posY
 
     drawArt()
 }
@@ -245,7 +236,27 @@ function drawArt() {
     line8.draw()
 }
 
+/**
+ * drawGrid() Draws the Grid on the canvas
+ */
+function drawGrid() {
+    //  Draw Grid
+    fill(217, 106, 19)
+    for (let i = 0; i < numRows; i++) {
+        for (let j = 0; j < numCol; j++) {
+            push()
+            translate(j * colWidth, i * rowHeight)
+
+            rect(0, 0, colWidth, rowHeight)
+            pop()
+        }
+    }
+}
+
+/**
+ * keyReleased() Special actions to do when a
+ * certain key is pressed
+ */
 function keyReleased() {
-    // TODO: Make this regerate drawing
-    key.toUpperCase() === "R" && ranSeed++ && drawArt()
+    key.toUpperCase() === "R" && ranSeed++ && drawArt() // Regenerate drawing with new randomPositions
 }
