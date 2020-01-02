@@ -105,6 +105,7 @@ function draw() {
 function drawArt() {
     background(217, 106, 19)
     randomSeed(ranSeed)
+    const rand = random()
 
     // ***************************************************************************
     // Think Black lines
