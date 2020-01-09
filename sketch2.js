@@ -90,7 +90,7 @@ function draw() {
     posX > width / 2
         ? (posX = width / 2)
         : posX < -width / 2 && (posX = -width / 2) // Constrain to canvas
-    document.getElementById("mouseX").innerHTML = posX
+    // document.getElementById("mouseX").innerHTML = posX
 
     // Mouse Y positon
     let posY = height / 2 - mouseY
@@ -98,7 +98,7 @@ function draw() {
     posY > height / 2
         ? (posY = height / 2)
         : posY < -height / 2 && (posY = -height / 2) // Constrain to canvas
-    document.getElementById("mouseY").innerHTML = posY
+    // document.getElementById("mouseY").innerHTML = posY
 
     // Overhang Difference
     overhangDif = floor(map(posX, 0, 877, 0, 5))
@@ -280,4 +280,5 @@ function drawGrid() {
  */
 function keyReleased() {
     key.toUpperCase() === "R" && ranSeed++ && drawArt() // Regenerate drawing with new randomPositions
+    key.toUpperCase() === "S" && saveCanvas('Generative-Design-Output-Josef-Albers-' + new Date().toISOString(), 'png')
 }
