@@ -280,5 +280,9 @@ function drawGrid() {
  */
 function keyReleased() {
     key.toUpperCase() === "R" && ranSeed++ && drawArt() // Regenerate drawing with new randomPositions
-    key.toUpperCase() === "S" && saveCanvas('Generative-Design-Output-Josef-Albers-' + new Date().toISOString(), 'png')
+    key.toUpperCase() === "S" &&
+        saveCanvas(
+            "Generative-Design-Output-Josef-Albers-" + new Date().toISOString(),
+            "png"
+        )
 }
