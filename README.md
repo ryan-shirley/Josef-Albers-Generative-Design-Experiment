@@ -6,6 +6,9 @@ IADT Year 4 | Creative Coding CA1 | Generative Design Colour Experiment based of
 ### Book Cover Sample
 ![Book Cover Sample](https://raw.githubusercontent.com/ryan-shirley/Josef-Albers-Generative-Design-Experiment/master/book-cover.png)
 
+### Interface
+![Interface](https://github.com/ryan-shirley/Josef-Albers-Generative-Design-Experiment/blob/master/interface.png?raw=true)
+
 ### Sample Outputs
 ![Sample Output1](https://raw.githubusercontent.com/ryan-shirley/Josef-Albers-Generative-Design-Experiment/master/Sample%20Outputs/Generative-Design-Output-Josef-Albers-2020-01-09T20_51_26.603Z.png)
 
